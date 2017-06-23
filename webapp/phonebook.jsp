@@ -1,14 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page import="ru.academits.model.Contact" %>
+<%@ page import="java.util.List" %>
+<%@ page import="ru.academits.PhoneBook" %>
 <!DOCTYPE html>
 <html lang="">
 
 <head>
-    <%@ page contentType="text/html;charset=utf-8" %>
+    <%
+        List<Contact> contactList = PhoneBook.phoneBookService.getAllContacts();
+        request.setAttribute("contactList", contactList);
+    %>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/phonebook.css"/>
     <title>Phone book</title>
 </head>
+
 
 <body>
 
@@ -41,20 +49,33 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>
-                <label class="select-me-label">
-                    <input type="checkbox" class="select-me"/>
-                </label>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button class='btn btn-primary' type='button'>Удалить</button>
-            </td>
-        </tr>
+        <%  int number = 0;
+            for ( Contact contact: contactList){
+                number++;
+        %>
+             <tr>
+                 <td>
+                     <label class="select-me-label">
+                         <input type="checkbox" class="select-me"/>
+                     </label>
+                 </td>
+                 <td>
+                     <% out.println(number);  %>
+                 </td>
+                 <td>
+                     <% out.println(contact.getLastName());  %>
+                 </td>
+                 <td>
+                     <% out.println(contact.getFirstName());  %>
+                 </td>
+                 <td>
+                     <% out.println(contact.getPhone());  %>
+                 </td>
+                 <td>
+                     <button class='btn btn-primary' type='button'>Удалить</button>
+                 </td>
+             </tr>
+        <%}%>
         </tbody>
     </table>
 
@@ -64,29 +85,29 @@
     <div class="server-error-message-container">
         <span></span>
     </div>
-    <form>
+    <form action="/phonebook/add" method="POST">
         <div>
             <label class="form-label">
                 <span class="form-field">Фамилия:</span>
-                <input type="text" class="form-control input-sm form-input"/>
+                <input type="text" class="form-control input-sm form-input" name="lastName"/>
                 <span class="error-message"></span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Имя:</span>
-                <input type="text" class="form-control input-sm form-input"/>
+                <input type="text" class="form-control input-sm form-input" name="firstName"/>
                 <span class="error-message"></span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
-                <input type="number" class="form-control input-sm form-input"/>
+                <input type="number" class="form-control input-sm form-input" name="phone"/>
                 <span class="error-message" data-bind="text: phoneError().message, visible: validation"></span>
             </label>
         </div>
-        <button type="button" class="btn btn-primary">Добавить</button>
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
 
 </div>

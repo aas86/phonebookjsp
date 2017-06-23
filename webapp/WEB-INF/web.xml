@@ -6,22 +6,17 @@
   <display-name>PhoneBook on Servlets</display-name>
 
   <servlet>
-    <servlet-name>getAllContactsServlet</servlet-name>
-    <servlet-class>ru.academits.servlet.GetAllContactsServlet</servlet-class>
-  </servlet>
-
-  <servlet>
     <servlet-name>AddContactsServlet</servlet-name>
     <servlet-class>ru.academits.servlet.AddContactServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>getAllContactsServlet</servlet-name>
-    <url-pattern>/phonebook/get/all</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
     <servlet-name>AddContactsServlet</servlet-name>
     <url-pattern>/phonebook/add</url-pattern>
   </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>phonebook.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
+
