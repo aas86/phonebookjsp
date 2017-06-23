@@ -2,9 +2,7 @@
 <html lang="">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%@ page contentType="text/html;charset=utf-8" %>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
@@ -42,17 +40,17 @@
             <th>Удалить</th>
         </tr>
         </thead>
-        <tbody data-bind="foreach: rows">
-        <tr data-bind="if: shown">
+        <tbody>
+        <tr>
             <td>
                 <label class="select-me-label">
                     <input type="checkbox" class="select-me"/>
                 </label>
             </td>
-            <td data-bind="text: number"></td>
-            <td data-bind="text: lastName"></td>
-            <td data-bind="text: firstName"></td>
-            <td data-bind="text: phone"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
                 <button class='btn btn-primary' type='button'>Удалить</button>
             </td>
@@ -64,43 +62,33 @@
 
     <br>
     <div class="server-error-message-container">
-        <span data-bind="text: serverError(), visible: serverValidation"></span>
+        <span></span>
     </div>
-    <form class="form">
+    <form>
         <div>
             <label class="form-label">
                 <span class="form-field">Фамилия:</span>
-                <input type="text" class="form-control input-sm form-input"
-                       data-bind="value: lastName, css: { 'input-error': lastNameError().error && validation }"/>
-                <span class="error-message" data-bind="text: lastNameError().message, visible: validation"></span>
+                <input type="text" class="form-control input-sm form-input"/>
+                <span class="error-message"></span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Имя:</span>
-                <input type="text" class="form-control input-sm form-input"
-                       data-bind="value: firstName, css: { 'input-error': firstNameError().error && validation }"/>
-                <span class="error-message" data-bind="text: firstNameError().message, visible: validation"></span>
+                <input type="text" class="form-control input-sm form-input"/>
+                <span class="error-message"></span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
-                <input type="number" class="form-control input-sm form-input"
-                       data-bind="value: phone,  css: { 'input-error': phoneError().error && validation}"/>
+                <input type="number" class="form-control input-sm form-input"/>
                 <span class="error-message" data-bind="text: phoneError().message, visible: validation"></span>
             </label>
         </div>
-        <button type="button" class="btn btn-primary" data-bind="click: addContact">Добавить</button>
+        <button type="button" class="btn btn-primary">Добавить</button>
     </form>
 
 </div>
-<script src="js/libs/jquery-3.2.1.js"></script>
-<script src="js/libs/jquery-ui.js"></script>
-<script src="js/libs/jquery-confirm.js"></script>
-<script src="js/libs/bootstrap.min.js"></script>
-<script src="js/libs/underscore-min.js"></script>
-<script src="js/libs/knockout-latest.js"></script>
-<script src="js/phonebook.js"></script>
 </body>
 </html>

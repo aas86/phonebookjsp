@@ -11,7 +11,10 @@
         </element>
         <element id="file-copy" path="$PROJECT_DIR$/webapp/WEB-INF/web.xml" />
       </element>
-      <element id="file-copy" path="$PROJECT_DIR$/webapp/index.html" />
+      <element id="file-copy" path="$PROJECT_DIR$/webapp/index.jsp" />
+      <element id="directory" name="css">
+        <element id="dir-copy" path="$PROJECT_DIR$/webapp/css" />
+      </element>
     </root>
   </artifact>
 </component>
