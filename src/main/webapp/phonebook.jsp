@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ru.academits.service.ContactValidation" %>
@@ -19,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/phonebook.css"/>
     <title>Phone book</title>
+   <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 </head>
 
 
