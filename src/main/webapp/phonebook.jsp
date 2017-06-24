@@ -1,9 +1,11 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.academits.PhoneBook" %>
 <%@ page import="ru.academits.service.ContactValidation" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
+
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -21,10 +23,6 @@
 
 
 <body>
-<%
-    out.println(request.getAttribute("test"));
-%>
-
 
 <div class="delete-dialog"></div>
 

@@ -1,7 +1,6 @@
 package ru.academits;
 
 import ru.academits.coverter.ContactConverter;
-import ru.academits.coverter.ContactValidationConverter;
 import ru.academits.dao.ContactDao;
 import ru.academits.service.ContactService;
 
@@ -15,6 +14,4 @@ public class PhoneBook {
     public static ContactService contactService = new ContactService();
 
     public static ContactConverter contactConverter = new ContactConverter();
-
-    public static ContactValidationConverter contactValidationConverter = new ContactValidationConverter();
 }
