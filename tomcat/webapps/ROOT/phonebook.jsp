@@ -14,6 +14,7 @@
     <%
         List<Contact> contactList = (List<Contact>) request.getAttribute("contactList");
         ContactValidation contactValidation = (ContactValidation) request.getAttribute("contactValidation");
+        Contact currentContact = (Contact) request.getAttribute("currentContact");
     %>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
@@ -102,7 +103,8 @@
         <div>
             <label class="form-label">
                 <span class="form-field">Фамилия:</span>
-                <input type="text" class="form-control input-sm form-input" name="lastName"/>
+                <input type="text" class="form-control input-sm form-input" name="lastName"
+                       value='<%=currentContact.getLastName() == null ? "" : currentContact.getLastName() %>' />
                 <span class="error-message">
                     <%
                         if(!StringUtils.isEmpty(contactValidation.getLastNameError())) {
@@ -115,7 +117,8 @@
         <div>
             <label class="form-label">
                 <span class="form-field">Имя:</span>
-                <input type="text" class="form-control input-sm form-input" name="firstName"/>
+                <input type="text" class="form-control input-sm form-input" name="firstName"
+                       value='<%=currentContact.getFirstName() == null ? "" : currentContact.getFirstName() %>' />
                 <span class="error-message">
                     <%
                         if(!StringUtils.isEmpty(contactValidation.getFirstNameError())) {
@@ -128,7 +131,8 @@
         <div>
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
-                <input type="number" class="form-control input-sm form-input" name="phone"/>
+                <input type="number" class="form-control input-sm form-input" name="phone"
+                       value='<%=currentContact.getPhone() == null ? "" : currentContact.getPhone() %>' />
                 <span class="error-message">
                      <%
                          if(!StringUtils.isEmpty(contactValidation.getPhoneError())) {

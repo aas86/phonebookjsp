@@ -1,6 +1,7 @@
 package ru.academits.servlet;
 
 import ru.academits.PhoneBook;
+import ru.academits.model.Contact;
 import ru.academits.service.ContactService;
 import ru.academits.service.ContactValidation;
 
@@ -16,6 +17,7 @@ public class StartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("contactList", contactService.getAllContacts());
         req.setAttribute("contactValidation", new ContactValidation());
+        req.setAttribute("currentContact", new Contact());
         req.getRequestDispatcher("phonebook.jsp").forward(req, resp);
     }
 }

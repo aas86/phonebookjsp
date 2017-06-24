@@ -26,6 +26,11 @@ public class AddContactServlet extends HttpServlet {
         ContactValidation contactValidation = contactService.addContact(contact);
         req.setAttribute("contactValidation", contactValidation);
         req.setAttribute("contactList", contactService.getAllContacts());
+        if (contactValidation.isValid()) {
+            req.setAttribute("currentContact", new Contact());
+        } else {
+            req.setAttribute("currentContact", contact);
+        }
 
         req.getRequestDispatcher("phonebook.jsp").forward(req, resp);
     }
