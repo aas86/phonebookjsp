@@ -2,13 +2,15 @@
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ru.academits.PhoneBook" %>
+<%@ page import="ru.academits.service.ContactValidation" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <!DOCTYPE html>
 <html lang="">
 
 <head>
     <%
-        List<Contact> contactList = PhoneBook.contactService.getAllContacts();
-        request.setAttribute("contactList", contactList);
+        List<Contact> contactList = (List<Contact>) request.getAttribute("contactList");
+        ContactValidation contactValidation = (ContactValidation) request.getAttribute("contactValidation");
     %>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
@@ -19,6 +21,10 @@
 
 
 <body>
+<%
+    out.println(request.getAttribute("test"));
+%>
+
 
 <div class="delete-dialog"></div>
 
@@ -49,32 +55,32 @@
         </tr>
         </thead>
         <tbody>
-        <%  int number = 0;
-            for ( Contact contact: contactList){
+        <% int number = 0;
+            for (Contact contact : contactList) {
                 number++;
         %>
-             <tr>
-                 <td>
-                     <label class="select-me-label">
-                         <input type="checkbox" class="select-me"/>
-                     </label>
-                 </td>
-                 <td>
-                     <% out.println(number);  %>
-                 </td>
-                 <td>
-                     <% out.println(contact.getLastName());  %>
-                 </td>
-                 <td>
-                     <% out.println(contact.getFirstName());  %>
-                 </td>
-                 <td>
-                     <% out.println(contact.getPhone());  %>
-                 </td>
-                 <td>
-                     <button class='btn btn-primary' type='button'>Удалить</button>
-                 </td>
-             </tr>
+        <tr>
+            <td>
+                <label class="select-me-label">
+                    <input type="checkbox" class="select-me"/>
+                </label>
+            </td>
+            <td>
+                <% out.println(number); %>
+            </td>
+            <td>
+                <% out.println(contact.getLastName()); %>
+            </td>
+            <td>
+                <% out.println(contact.getFirstName()); %>
+            </td>
+            <td>
+                <% out.println(contact.getPhone()); %>
+            </td>
+            <td>
+                <button class='btn btn-primary' type='button'>Удалить</button>
+            </td>
+        </tr>
         <%}%>
         </tbody>
     </table>
@@ -82,32 +88,54 @@
     <button type="button" class="btn btn-primary">Удалить выбранные</button>
 
     <br>
-    <div class="server-error-message-container">
-        <span>
-
+    <label class="server-error-message-container">
+        <span class="error-message">
+            <%
+                if(!StringUtils.isEmpty(contactValidation.getGlobalError())) {
+                    out.println(contactValidation.getGlobalError());
+                }
+            %>
         </span>
 
-    </div>
-    <form action="/phonebook/add" method="POST">
+    </label>
+    <form action="add" method="POST">
         <div>
             <label class="form-label">
                 <span class="form-field">Фамилия:</span>
                 <input type="text" class="form-control input-sm form-input" name="lastName"/>
-                <span class="error-message"></span>
+                <span class="error-message">
+                    <%
+                        if(!StringUtils.isEmpty(contactValidation.getLastNameError())) {
+                            out.println(contactValidation.getLastNameError());
+                        }
+                    %>
+                </span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Имя:</span>
                 <input type="text" class="form-control input-sm form-input" name="firstName"/>
-                <span class="error-message"></span>
+                <span class="error-message">
+                    <%
+                        if(!StringUtils.isEmpty(contactValidation.getFirstNameError())) {
+                            out.println(contactValidation.getFirstNameError());
+                        }
+                    %>
+                </span>
             </label>
         </div>
         <div>
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
                 <input type="number" class="form-control input-sm form-input" name="phone"/>
-                <span class="error-message"></span>
+                <span class="error-message">
+                     <%
+                         if(!StringUtils.isEmpty(contactValidation.getPhoneError())) {
+                             out.println(contactValidation.getPhoneError());
+                         }
+                     %>
+                </span>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Добавить</button>

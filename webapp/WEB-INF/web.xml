@@ -10,13 +10,20 @@
     <servlet-class>ru.academits.servlet.AddContactServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>StartServlet</servlet-name>
+    <servlet-class>ru.academits.servlet.StartServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>AddContactsServlet</servlet-name>
-    <url-pattern>/phonebook/add</url-pattern>
+    <url-pattern>/add</url-pattern>
   </servlet-mapping>
 
-  <welcome-file-list>
-    <welcome-file>phonebook.jsp</welcome-file>
-  </welcome-file-list>
+  <servlet-mapping>
+    <servlet-name>StartServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 
