@@ -7,7 +7,7 @@
 
 <head>
     <%
-        List<Contact> contactList = PhoneBook.phoneBookService.getAllContacts();
+        List<Contact> contactList = PhoneBook.contactService.getAllContacts();
         request.setAttribute("contactList", contactList);
     %>
 
@@ -83,7 +83,10 @@
 
     <br>
     <div class="server-error-message-container">
-        <span></span>
+        <span>
+
+        </span>
+
     </div>
     <form action="/phonebook/add" method="POST">
         <div>
@@ -104,7 +107,7 @@
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
                 <input type="number" class="form-control input-sm form-input" name="phone"/>
-                <span class="error-message" data-bind="text: phoneError().message, visible: validation"></span>
+                <span class="error-message"></span>
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Добавить</button>

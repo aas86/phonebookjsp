@@ -1,5 +1,6 @@
 package ru.academits.service;
 
+import org.apache.commons.lang.StringUtils;
 import ru.academits.PhoneBook;
 import ru.academits.dao.ContactDao;
 import ru.academits.model.Contact;
@@ -22,27 +23,27 @@ public class ContactService {
     public ContactValidation validateContact(Contact contact) {
         ContactValidation contactValidation = new ContactValidation();
         contactValidation.setValid(true);
-        if (contact.getFirstName().isEmpty()) {
+        if (StringUtils.isEmpty(contact.getFirstName())){
             contactValidation.setValid(false);
-            contactValidation.setError("Поле Имя должно быть заполнено.");
+            contactValidation.setFirstNameError("Поле Имя должно быть заполнено.");
             return contactValidation;
         }
 
-        if (contact.getLastName().isEmpty()) {
+        if (StringUtils.isEmpty(contact.getLastName())){
             contactValidation.setValid(false);
-            contactValidation.setError("Поле Фамилия должно быть заполнено.");
+            contactValidation.setLastNameError("Поле Фамилия должно быть заполнено.");
             return contactValidation;
         }
 
-        if (contact.getPhone().isEmpty()) {
+        if (StringUtils.isEmpty(contact.getPhone())){
             contactValidation.setValid(false);
-            contactValidation.setError("Поле Телефон должно быть заполнено.");
+            contactValidation.setPhoneError("Поле Телефон должно быть заполнено.");
             return contactValidation;
         }
 
         if (isExistContactWithPhone(contact.getPhone())) {
             contactValidation.setValid(false);
-            contactValidation.setError("Номер телефона не должен дублировать другие номера в телефонной книге.");
+            contactValidation.setGlobalError("Номер телефона не должен дублировать другие номера в телефонной книге.");
             return contactValidation;
         }
         return contactValidation;

@@ -10,5 +10,6 @@
     <orderEntry type="library" name="gson-2.2.2" level="project" />
     <orderEntry type="library" name="servlet-api-2.5" level="project" />
     <orderEntry type="library" name="jstl-api-1.2" level="project" />
+    <orderEntry type="library" name="apache-commons-lang" level="project" />
   </component>
 </module>
