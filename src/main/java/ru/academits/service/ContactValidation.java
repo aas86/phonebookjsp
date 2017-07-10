@@ -7,6 +7,10 @@ public class ContactValidation {
     private String phoneError;
     private String globalError;
 
+    public ContactValidation(){
+        this.valid = true;
+    }
+
     public boolean isValid() {
         return valid;
     }

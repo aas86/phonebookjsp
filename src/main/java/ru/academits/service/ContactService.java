@@ -58,4 +58,21 @@ public class ContactService {
     public List<Contact> getAllContacts() {
         return contactDao.getAllContacts();
     }
+
+    public void saveLastContact(Contact contact) {
+
+        contactDao.saveLastContact(contact);
+    }
+
+    public Contact getLastContact() {
+        return contactDao.getLastContact();
+    }
+
+    public void saveLastContactValidation(ContactValidation contactValidation) {
+        contactDao.saveLastContactValidation(contactValidation);
+    }
+
+    public ContactValidation getLastContactValidation() {
+        return contactDao.getLastContactValidation();
+    }
 }

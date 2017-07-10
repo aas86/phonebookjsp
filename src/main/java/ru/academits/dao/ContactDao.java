@@ -1,6 +1,7 @@
 package ru.academits.dao;
 
 import ru.academits.model.Contact;
+import ru.academits.service.ContactValidation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ContactDao {
     private List<Contact> contactList = new ArrayList<>();
     private AtomicInteger idSequence = new AtomicInteger(0);
+    private Contact lastContact = new Contact();
+    private ContactValidation lastContactValidation = new ContactValidation();
 
     public ContactDao() {
         Contact contact = new Contact();
@@ -26,13 +29,27 @@ public class ContactDao {
         return idSequence.addAndGet(1);
     }
 
-
-
     public List<Contact> getAllContacts() {
         return contactList;
     }
 
     public void add(Contact contact) {
         contactList.add(contact);
+    }
+
+    public void saveLastContact(Contact contact) {
+        this.lastContact = contact;
+    }
+
+    public Contact getLastContact() {
+        return lastContact;
+    }
+
+    public void saveLastContactValidation(ContactValidation contactValidation) {
+        this.lastContactValidation = contactValidation;
+    }
+
+    public ContactValidation getLastContactValidation() {
+        return lastContactValidation;
     }
 }

@@ -16,8 +16,8 @@ public class StartServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("contactList", contactService.getAllContacts());
-        req.setAttribute("contactValidation", new ContactValidation());
-        req.setAttribute("currentContact", new Contact());
+        req.setAttribute("contactValidation", contactService.getLastContactValidation());
+        req.setAttribute("currentContact", contactService.getLastContact());
         req.getRequestDispatcher("phonebook.jsp").forward(req, resp);
     }
 }

@@ -24,14 +24,13 @@ public class AddContactServlet extends HttpServlet {
         Contact contact = contactConverter.convertFormStringParam(contactParams);
 
         ContactValidation contactValidation = contactService.addContact(contact);
-        req.setAttribute("contactValidation", contactValidation);
-        req.setAttribute("contactList", contactService.getAllContacts());
+        contactService.saveLastContactValidation(contactValidation);
         if (contactValidation.isValid()) {
-            req.setAttribute("currentContact", new Contact());
+            contactService.saveLastContact(new Contact());
         } else {
-            req.setAttribute("currentContact", contact);
+            contactService.saveLastContact(contact);
         }
 
-        req.getRequestDispatcher("phonebook.jsp").forward(req, resp);
+        resp.sendRedirect("/");
     }
 }
