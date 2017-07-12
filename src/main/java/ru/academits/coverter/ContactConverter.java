@@ -19,7 +19,7 @@ public class ContactConverter {
     }
 
     private static Map<String, String> splitQuery(String params) throws UnsupportedEncodingException {
-        Map<String, String> queryPairs = new HashMap<String, String>();
+        Map<String, String> queryPairs = new HashMap<>();
         String[] pairs = params.split("&");
         for (String pair : pairs) {
             int idx = pair.indexOf("=");

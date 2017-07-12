@@ -1,28 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
-<%@ page import="ru.academits.service.ContactValidation" %>
-<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html lang="">
-
 <head>
     <%
         List<Contact> contactList = (List<Contact>) request.getAttribute("contactList");
-        ContactValidation contactValidation = (ContactValidation) request.getAttribute("contactValidation");
         Contact currentContact = (Contact) request.getAttribute("currentContact");
     %>
-
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/phonebook.css"/>
     <title>Phone book</title>
-
 </head>
-
-
 <body>
 
 <div class="delete-dialog"></div>
@@ -36,7 +27,6 @@
         <button class="btn btn-primary">Отфильтровать</button>
         <button class="btn btn-primary">Сбросить фильтр</button>
     </div>
-
 
     <table class="table table-bordered contact-table">
         <thead>
@@ -54,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <% int number = 0;
+        <%  int number = 0;
             for (Contact contact : contactList) {
                 number++;
         %>
@@ -138,7 +128,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
-
 </div>
 </body>
 </html>
