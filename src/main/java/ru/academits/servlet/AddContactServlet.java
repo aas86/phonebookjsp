@@ -31,6 +31,6 @@ public class AddContactServlet extends HttpServlet {
             contactService.saveLastContact(contact);
         }
 
-        resp.sendRedirect("/");
+        resp.sendRedirect("/phonebook");
     }
 }

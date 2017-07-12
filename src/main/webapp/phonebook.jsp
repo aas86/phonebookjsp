@@ -1,11 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ru.academits.service.ContactValidation" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="">
@@ -21,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/phonebook.css"/>
     <title>Phone book</title>
-   <%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+
 </head>
 
 
@@ -91,11 +89,10 @@
     <br>
     <label class="server-error-message-container">
         <span class="error-message">
-            <%
-                if(!StringUtils.isEmpty(contactValidation.getGlobalError())) {
-                    out.println(contactValidation.getGlobalError());
-                }
-            %>
+             <c:if test="${not empty contactValidation.globalError}">
+                 <c:out value="${contactValidation.globalError}">
+                 </c:out>
+             </c:if>
         </span>
 
     </label>
@@ -106,11 +103,10 @@
                 <input type="text" class="form-control input-sm form-input" name="lastName"
                        value='<%=currentContact.getLastName() == null ? "" : currentContact.getLastName() %>' />
                 <span class="error-message">
-                    <%
-                        if(!StringUtils.isEmpty(contactValidation.getLastNameError())) {
-                            out.println(contactValidation.getLastNameError());
-                        }
-                    %>
+                     <c:if test="${not empty contactValidation.lastNameError}">
+                         <c:out value="${contactValidation.lastNameError}">
+                         </c:out>
+                     </c:if>
                 </span>
             </label>
         </div>
@@ -120,11 +116,10 @@
                 <input type="text" class="form-control input-sm form-input" name="firstName"
                        value='<%=currentContact.getFirstName() == null ? "" : currentContact.getFirstName() %>' />
                 <span class="error-message">
-                    <%
-                        if(!StringUtils.isEmpty(contactValidation.getFirstNameError())) {
-                            out.println(contactValidation.getFirstNameError());
-                        }
-                    %>
+                    <c:if test="${not empty contactValidation.firstNameError}">
+                        <c:out value="${contactValidation.firstNameError}">
+                        </c:out>
+                    </c:if>
                 </span>
             </label>
         </div>
@@ -134,11 +129,10 @@
                 <input type="number" class="form-control input-sm form-input" name="phone"
                        value='<%=currentContact.getPhone() == null ? "" : currentContact.getPhone() %>' />
                 <span class="error-message">
-                     <%
-                         if(!StringUtils.isEmpty(contactValidation.getPhoneError())) {
-                             out.println(contactValidation.getPhoneError());
-                         }
-                     %>
+                     <c:if test="${not empty contactValidation.phoneError}">
+                         <c:out value="${contactValidation.phoneError}">
+                         </c:out>
+                     </c:if>
                 </span>
             </label>
         </div>
