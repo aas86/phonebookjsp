@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="runTomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M26" ALTERNATIVE_JRE_ENABLED="false">
+  <configuration default="false" name="runTomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.11" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_141\jre">
     <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/phonebook" />
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>

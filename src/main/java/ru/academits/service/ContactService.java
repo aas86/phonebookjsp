@@ -5,6 +5,7 @@ import ru.academits.dao.ContactDao;
 import ru.academits.model.Contact;
 import org.apache.commons.lang.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -53,6 +54,14 @@ public class ContactService {
             contactDao.add(contact);
         }
         return contactValidation;
+    }
+
+    public void deleteContact(int id){
+        contactDao.delete(id);
+    }
+
+    public void deleteSelectedContacts(ArrayList<String> arrayList){
+        contactDao.deleteSelectedContacts(arrayList);
     }
 
     public List<Contact> getAllContacts() {

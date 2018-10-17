@@ -34,7 +34,27 @@ public class ContactDao {
     }
 
     public void add(Contact contact) {
+        contact.setId(getNewId());
         contactList.add(contact);
+    }
+
+    public void delete(int id) {
+        idSequence.decrementAndGet();
+        contactList.stream().filter(x -> x.getId() >= id).forEach(x -> x.setId(x.getId() - 1));
+        contactList.remove(id - 1);
+    }
+
+    public void deleteSelectedContacts(ArrayList<String> arrayList) {
+
+        int delta = 0;
+        for (String id : arrayList) {
+            delta++;
+            int x = Integer.parseInt(id);
+            contactList.remove(x - delta);
+            idSequence.decrementAndGet();
+
+        }
+
     }
 
     public void saveLastContact(Contact contact) {

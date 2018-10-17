@@ -19,5 +19,6 @@ public class StartServlet extends HttpServlet {
         req.setAttribute("contactValidation", contactService.getLastContactValidation());
         req.setAttribute("currentContact", contactService.getLastContact());
         req.getRequestDispatcher("phonebook.jsp").forward(req, resp);
+
     }
 }

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ page import="ru.academits.model.Contact" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="">
@@ -27,55 +28,64 @@
         <button class="btn btn-primary">Отфильтровать</button>
         <button class="btn btn-primary">Сбросить фильтр</button>
     </div>
+    <form action="deleteSelectedContact" method="POST">
+        <table class="table table-bordered contact-table">
+            <thead>
+            <tr>
+                <th>
+                    <label class="select-all-label">
+                        <input type="checkbox" title="Выбрать"/>
+                    </label>
+                </th>
+                <th>№</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
 
-    <table class="table table-bordered contact-table">
-        <thead>
-        <tr>
-            <th>
-                <label class="select-all-label">
-                    <input type="checkbox" title="Выбрать"/>
-                </label>
-            </th>
-            <th>№</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Телефон</th>
-            <th>Удалить</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%  int number = 0;
-            for (Contact contact : contactList) {
-                number++;
-        %>
-        <tr>
-            <td>
-                <label class="select-me-label">
-                    <input type="checkbox" class="select-me"/>
-                </label>
-            </td>
-            <td>
-                <% out.println(number); %>
-            </td>
-            <td>
-                <% out.println(contact.getLastName()); %>
-            </td>
-            <td>
-                <% out.println(contact.getFirstName()); %>
-            </td>
-            <td>
-                <% out.println(contact.getPhone()); %>
-            </td>
-            <td>
-                <button class='btn btn-primary' type='button'>Удалить</button>
-            </td>
-        </tr>
-        <%}%>
-        </tbody>
-    </table>
+            <tbody>
 
-    <button type="button" class="btn btn-primary">Удалить выбранные</button>
+            <% int number = 0;
+                for (Contact contact : contactList) {
+                    number++;
+            %>
 
+            <tr>
+                <td>
+                    <label class="select-me-label">
+                        <input type="checkbox" name="selected" value="<%=contact.getId()%>" class="select-me"/>
+                    </label>
+                </td>
+                <td>
+                    <% out.println(number); %>
+                </td>
+                <td>
+                    <% out.println(contact.getLastName()); %>
+                </td>
+                <td>
+                    <% out.println(contact.getFirstName()); %>
+                </td>
+                <td>
+                    <% out.println(contact.getPhone()); %>
+                </td>
+                <td>
+                    <!--<form action="deleteContact" method="POST">-->
+                        <button class='btn btn-primary' type='submit' name="id" value='<%=number%>'>Удалить</button>
+                    <!--  </form>-->
+                </td>
+            </tr>
+
+            <%}%>
+            </tbody>
+        </table>
+
+
+        <button type="submit" class="btn btn-primary">
+            Удалить выбранные
+        </button>
+    </form>
     <br>
     <label class="server-error-message-container">
         <span class="error-message">
@@ -91,7 +101,7 @@
             <label class="form-label">
                 <span class="form-field">Фамилия:</span>
                 <input type="text" class="form-control input-sm form-input" name="lastName"
-                       value='<%=currentContact.getLastName() == null ? "" : currentContact.getLastName() %>' />
+                       value='<%=currentContact.getLastName() == null ? "" : currentContact.getLastName() %>'/>
                 <span class="error-message">
                      <c:if test="${not empty contactValidation.lastNameError}">
                          <c:out value="${contactValidation.lastNameError}">
@@ -104,7 +114,7 @@
             <label class="form-label">
                 <span class="form-field">Имя:</span>
                 <input type="text" class="form-control input-sm form-input" name="firstName"
-                       value='<%=currentContact.getFirstName() == null ? "" : currentContact.getFirstName() %>' />
+                       value='<%=currentContact.getFirstName() == null ? "" : currentContact.getFirstName() %>'/>
                 <span class="error-message">
                     <c:if test="${not empty contactValidation.firstNameError}">
                         <c:out value="${contactValidation.firstNameError}">
@@ -117,7 +127,7 @@
             <label class="form-label">
                 <span class="form-field">Телефон:</span>
                 <input type="number" class="form-control input-sm form-input" name="phone"
-                       value='<%=currentContact.getPhone() == null ? "" : currentContact.getPhone() %>' />
+                       value='<%=currentContact.getPhone() == null ? "" : currentContact.getPhone() %>'/>
                 <span class="error-message">
                      <c:if test="${not empty contactValidation.phoneError}">
                          <c:out value="${contactValidation.phoneError}">
@@ -129,5 +139,8 @@
         <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
 </div>
+<br>
+<c:set var="x" value="1"/>
+${x}
 </body>
 </html>
