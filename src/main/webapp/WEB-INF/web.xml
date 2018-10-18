@@ -4,45 +4,36 @@
 	      http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-  <display-name>PhoneBook on Servlets</display-name>
+    <display-name>PhoneBook on Servlets</display-name>
 
-  <servlet>
-    <servlet-name>AddContactsServlet</servlet-name>
-    <servlet-class>ru.academits.servlet.AddContactServlet</servlet-class>
-  </servlet>
+    <servlet>
+        <servlet-name>AddContactsServlet</servlet-name>
+        <servlet-class>ru.academits.servlet.AddContactServlet</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>StartServlet</servlet-name>
-    <servlet-class>ru.academits.servlet.StartServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>DeleteServlet</servlet-name>
-    <servlet-class>ru.academits.servlet.DeleteServlet</servlet-class>
-  </servlet>
+    <servlet>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>ru.academits.servlet.StartServlet</servlet-class>
+    </servlet>
 
-  <servlet>
-    <servlet-name>DeleteSelectedServlet</servlet-name>
-    <servlet-class>ru.academits.servlet.DeleteSelectedServlet</servlet-class>
-  </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>ru.academits.servlet.DeleteServlet</servlet-class>
+    </servlet>
 
-  <servlet-mapping>
-    <servlet-name>AddContactsServlet</servlet-name>
-    <url-pattern>/add</url-pattern>
-  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddContactsServlet</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>StartServlet</servlet-name>
-    <url-pattern>/phonebook</url-pattern>
-  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartServlet</servlet-name>
+        <url-pattern>/phonebook</url-pattern>
+    </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>DeleteServlet</servlet-name>
-    <url-pattern>/deleteContact</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>DeleteSelectedServlet</servlet-name>
-    <url-pattern>/deleteSelectedContact</url-pattern>
-  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/deleteContact</url-pattern>
+    </servlet-mapping>
 </web-app>
 

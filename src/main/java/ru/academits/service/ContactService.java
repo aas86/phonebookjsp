@@ -6,6 +6,7 @@ import ru.academits.model.Contact;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -25,17 +26,17 @@ public class ContactService {
     public ContactValidation validateContact(Contact contact) {
         ContactValidation contactValidation = new ContactValidation();
         contactValidation.setValid(true);
-        if (StringUtils.isEmpty(contact.getFirstName())){
+        if (StringUtils.isEmpty(contact.getFirstName())) {
             contactValidation.setValid(false);
             contactValidation.setFirstNameError("Поле Имя должно быть заполнено.");
         }
 
-        if (StringUtils.isEmpty(contact.getLastName())){
+        if (StringUtils.isEmpty(contact.getLastName())) {
             contactValidation.setValid(false);
             contactValidation.setLastNameError("Поле Фамилия должно быть заполнено.");
         }
 
-        if (StringUtils.isEmpty(contact.getPhone())){
+        if (StringUtils.isEmpty(contact.getPhone())) {
             contactValidation.setValid(false);
             contactValidation.setPhoneError("Поле Телефон должно быть заполнено.");
         }
@@ -56,12 +57,12 @@ public class ContactService {
         return contactValidation;
     }
 
-    public void deleteContact(int id){
+    public void deleteContact(int id) {
         contactDao.delete(id);
     }
 
-    public void deleteSelectedContacts(ArrayList<String> arrayList){
-        contactDao.deleteSelectedContacts(arrayList);
+    public void deleteSelectedContacts(HashSet<String> idSet) {
+        contactDao.deleteSelectedContacts(idSet);
     }
 
     public List<Contact> getAllContacts() {

@@ -16,9 +16,7 @@
     <title>Phone book</title>
 </head>
 <body>
-
 <div class="delete-dialog"></div>
-
 <div class="alert" title="Нет выбранных контактов"></div>
 <div class="content">
     <div class="filter-container">
@@ -28,7 +26,7 @@
         <button class="btn btn-primary">Отфильтровать</button>
         <button class="btn btn-primary">Сбросить фильтр</button>
     </div>
-    <form action="deleteSelectedContact" method="POST">
+    <form action="deleteContact" method="POST">
         <table class="table table-bordered contact-table">
             <thead>
             <tr>
@@ -72,11 +70,10 @@
                 </td>
                 <td>
                     <!--<form action="deleteContact" method="POST">-->
-                        <button class='btn btn-primary' type='submit' name="id" value='<%=number%>'>Удалить</button>
+                    <button class='btn btn-primary' type='submit' name="id" value='<%=number%>'>Удалить</button>
                     <!--  </form>-->
                 </td>
             </tr>
-
             <%}%>
             </tbody>
         </table>

@@ -4,6 +4,7 @@ import ru.academits.model.Contact;
 import ru.academits.service.ContactValidation;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -44,10 +45,10 @@ public class ContactDao {
         contactList.remove(id - 1);
     }
 
-    public void deleteSelectedContacts(ArrayList<String> arrayList) {
+    public void deleteSelectedContacts(HashSet<String> idSet) {
 
         int delta = 0;
-        for (String id : arrayList) {
+        for (String id : idSet) {
             delta++;
             int x = Integer.parseInt(id);
             contactList.remove(x - delta);

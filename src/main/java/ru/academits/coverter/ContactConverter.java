@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class ContactConverter {
@@ -33,11 +34,11 @@ public class ContactConverter {
         return Integer.parseInt(contactParams.substring(contactParams.indexOf("=") + 1));
     }
 
-    public ArrayList<String> convertForDeleteChecked(String contactParams) {
-        ArrayList<String> ids = new ArrayList<>();
+    public HashSet<String> convertForDeleteChecked(String contactParams) {
+        HashSet<String> ids = new HashSet<>();
         String[] pairs = contactParams.split("&");
         for (String pair : pairs) {
-           ids.add(pair.substring(pair.indexOf("=") + 1));
+            ids.add(pair.substring(pair.indexOf("=") + 1));
         }
         return ids;
     }
